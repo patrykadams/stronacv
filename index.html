@@ -7,12 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        /* Base styles and variables */
+        /* Professional UI definitions */
         :root {
             --primary: #2980b9;
+            --secondary: #27ae60;
             --dark: #2c3e50;
             --light: #f4f7f9;
             --white: #ffffff;
+            --gray: #7f8c8d;
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
@@ -46,7 +48,7 @@
         .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; transition: var(--transition); }
         .nav-links a:hover { color: var(--primary); }
 
-        /* Hero Section */
+        /* Hero Landing Area */
         .hero {
             height: 60vh;
             display: flex;
@@ -63,7 +65,7 @@
         .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
         .hero p { font-size: 1.2rem; max-width: 600px; opacity: 0.9; }
 
-        /* General Section Styling */
+        /* Section Layouts */
         section { padding: 80px 10%; }
         h2 { font-size: 2.2rem; margin-bottom: 3rem; text-align: center; position: relative; }
         h2::after {
@@ -71,7 +73,7 @@
             position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
         }
 
-        /* Skills & Analytics Section */
+        /* Analytics Dashboard Style */
         .analytics-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -84,20 +86,16 @@
         }
         .chart-wrapper { width: 100%; max-width: 450px; margin: 0 auto; }
 
-        /* Projects Section - Clickable Cards */
-        .projects-grid {
+        /* Grids for Projects and Certificates */
+        .grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
-        .project-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
+        .card-link { text-decoration: none; color: inherit; display: block; }
 
-        .project-card {
+        .card {
             background: var(--white);
             border-radius: 12px;
             overflow: hidden;
@@ -105,31 +103,35 @@
             transition: var(--transition);
             height: 100%;
             border: 1px solid transparent;
-            position: relative;
+            padding: 1.5rem;
         }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
             border-color: var(--primary);
         }
 
-        .project-info { padding: 2rem; }
-        .project-info h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.4rem; }
-        .project-info p { font-size: 0.95rem; color: var(--gray); margin-bottom: 1.5rem; }
+        .card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; }
+        .card p { font-size: 0.9rem; color: var(--gray); margin-bottom: 1rem; }
         
-        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .tag { background: #e1e8ed; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--dark); }
-
-        .view-more {
+        /* Certificate specific styling */
+        .cert-badge {
             display: inline-block;
-            margin-top: 15px;
-            font-weight: 700;
+            background: #e8f4fd;
             color: var(--primary);
-            font-size: 0.9rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
-        /* Footer */
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tag { background: #e1e8ed; padding: 0.25rem 0.7rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+
+        /* Footer and Socials */
         footer { background: var(--dark); color: var(--white); text-align: center; padding: 4rem 10%; }
         .social-links { margin-bottom: 2rem; }
         .social-links a { color: var(--white); margin: 0 1.5rem; text-decoration: none; font-weight: 600; transition: var(--transition); }
@@ -149,6 +151,7 @@
             <li><a href="#about">O mnie</a></li>
             <li><a href="#skills">Kompetencje</a></li>
             <li><a href="#projects">Projekty</a></li>
+            <li><a href="#certs">Certyfikaty</a></li>
             <li><a href="#contact">Kontakt</a></li>
         </ul>
     </nav>
@@ -186,52 +189,51 @@
 
     <section id="projects">
         <h2>Wybrane Projekty GitHub</h2>
-        <div class="projects-grid">
-            
-            <a href="https://github.com/patrykadams" class="project-link" target="_blank">
-                <div class="project-card">
-                    <div class="project-info">
-                        <h3>WaterReminder (Kotlin)</h3>
-                        <p>Aplikacja mobilna z systemem powiadomień i algorytmem obliczającym zapotrzebowanie na wodę. Skupienie na UX i efektywności.</p>
-                        <div class="tags"><span class="tag">Android</span><span class="tag">Kotlin</span><span class="tag">Algorithms</span></div>
-                        <span class="view-more">Zobacz kod →</span>
-                    </div>
+        <div class="grid-layout">
+            <a href="https://github.com/patrykadams" class="card-link" target="_blank">
+                <div class="card">
+                    <h3>WaterReminder (Kotlin)</h3>
+                    <p>Aplikacja mobilna z systemem powiadomień i algorytmem obliczającym zapotrzebowanie na wodę.</p>
+                    <div class="tags"><span class="tag">Android</span><span class="tag">Kotlin</span></div>
+                </div>
+            </a>
+            <a href="https://github.com/patrykadams/Projekt-python-covid19" class="card-link" target="_blank">
+                <div class="card">
+                    <h3>COVID-19 Analysis</h3>
+                    <p>Przetwarzanie i wizualizacja danych epidemiologicznych z użyciem Pandas i Plotly.</p>
+                    <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span></div>
+                </div>
+            </a>
+            <a href="https://github.com/patrykadams/Sql" class="card-link" target="_blank">
+                <div class="card">
+                    <h3>SQL Database Project</h3>
+                    <p>Projekt relacyjnej bazy danych z wykorzystaniem złożonych zapytań SQL i SQLite.</p>
+                    <div class="tags"><span class="tag">SQL</span><span class="tag">SQLite</span></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section id="certs" style="background: #fdfdfd;">
+        <h2>Certyfikaty i Szkolenia</h2>
+        <div class="grid-layout">
+            <a href="https://github.com/patrykadams/certyfikaty/tree/main/Data%20Camp" class="card-link" target="_blank">
+                <div class="card">
+                    <span class="cert-badge">Data Camp</span>
+                    <h3>Data Science Foundations</h3>
+                    <p>Ukończone kursy z zakresu czyszczenia danych w języku R oraz wprowadzenia do programowania w Pythonie.</p>
+                    <div class="tags"><span class="tag">R</span><span class="tag">Python</span><span class="tag">Data Cleaning</span></div>
                 </div>
             </a>
 
-            <a href="https://github.com/patrykadams/Projekt-python-covid19" class="project-link" target="_blank">
-                <div class="project-card">
-                    <div class="project-info">
-                        <h3>COVID-19 Analysis</h3>
-                        <p>Przetwarzanie i wizualizacja danych epidemiologicznych. Projekt skupiony na czyszczeniu danych i czytelnej prezentacji trendów.</p>
-                        <div class="tags"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Plotly</span></div>
-                        <span class="view-more">Zobacz kod →</span>
-                    </div>
+            <a href="https://github.com/patrykadams/certyfikaty/tree/main/Santander" class="card-link" target="_blank">
+                <div class="card">
+                    <span class="cert-badge">Santander Universidades</span>
+                    <h3>AI, Power BI & Data Science</h3>
+                    <p>Specjalistyczne szkolenia z nowoczesnych narzędzi analitycznych oraz podstaw sztucznej inteligencji.</p>
+                    <div class="tags"><span class="tag">AI</span><span class="tag">Power BI</span><span class="tag">Data Science</span></div>
                 </div>
             </a>
-
-            <a href="https://github.com/patrykadams/Sql" class="project-link" target="_blank">
-                <div class="project-card">
-                    <div class="project-info">
-                        <h3>SQL Database Project</h3>
-                        <p>Kompleksowy projekt relacyjnej bazy danych z wykorzystaniem złożonych zapytań SQL, podzapytań i SQLite.</p>
-                        <div class="tags"><span class="tag">SQL</span><span class="tag">SQLite</span><span class="tag">Databases</span></div>
-                        <span class="view-more">Zobacz kod →</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://github.com/patrykadams/Projekt-ekonometria" class="project-link" target="_blank">
-                <div class="project-card">
-                    <div class="project-info">
-                        <h3>Predictive Modeling</h3>
-                        <p>Weryfikacja hipotez statystycznych i analiza szeregów czasowych na danych makroekonomicznych w R i Gretl.</p>
-                        <div class="tags"><span class="tag">R</span><span class="tag">Ekonometria</span><span class="tag">Statistics</span></div>
-                        <span class="view-more">Zobacz kod →</span>
-                    </div>
-                </div>
-            </a>
-
         </div>
     </section>
 
@@ -244,42 +246,30 @@
             <a href="https://github.com/patrykadams" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/patryk-adamski-a49293216" target="_blank">LinkedIn</a>
         </div>
-        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Patryk Adamski. Wszystkie projekty dostępne na GitHub.</p>
+        <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Patryk Adamski. Built with code & precision.</p>
     </footer>
 
     <script>
-        // Skills Radar Chart initialization
+        /* Skill radar chart initialization using Chart.js */
         const ctx = document.getElementById('skillsChart').getContext('2d');
         const skillsChart = new Chart(ctx, {
             type: 'radar',
             data: {
                 labels: ['Python', 'SQL', 'R', 'Kotlin/Java', 'C#', 'Power BI'],
                 datasets: [{
-                    label: 'Skill Level (%)',
+                    label: 'Poziom (%)',
                     data: [90, 85, 80, 75, 70, 65],
                     backgroundColor: 'rgba(41, 128, 185, 0.2)',
                     borderColor: 'rgba(41, 128, 185, 1)',
                     borderWidth: 2,
-                    pointBackgroundColor: 'rgba(41, 128, 185, 1)',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgba(41, 128, 185, 1)'
+                    pointBackgroundColor: 'rgba(41, 128, 185, 1)'
                 }]
             },
             options: {
                 scales: {
-                    r: {
-                        angleLines: { color: '#ddd' },
-                        grid: { color: '#ddd' },
-                        pointLabels: { font: { size: 12, weight: 'bold' }, color: '#2c3e50' },
-                        suggestedMin: 0,
-                        suggestedMax: 100,
-                        ticks: { stepSize: 20, display: false }
-                    }
+                    r: { suggestedMin: 0, suggestedMax: 100, ticks: { display: false } }
                 },
-                plugins: {
-                    legend: { display: false }
-                },
+                plugins: { legend: { display: false } },
                 responsive: true,
                 maintainAspectRatio: false
             }
